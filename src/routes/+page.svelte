@@ -14,40 +14,40 @@
 
   const images = [
     {
-      url: "/imgs/be-1.avif",
+      url: `/imgs/be-1.avif`,
     },
     {
-      url: "/imgs/be-2.avif",
+      url: `/imgs/be-2.avif`,
     },
     {
-      url: "/imgs/be-3.avif",
+      url: `/imgs/be-3.avif`,
     },
     {
-      url: "/imgs/be-4.avif",
+      url: `/imgs/be-4.avif`,
     },
     {
-      url: "/imgs/be-5.avif",
+      url: `/imgs/be-5.avif`,
     },
     {
-      url: "/imgs/be-6.avif",
+      url: `/imgs/be-6.avif`,
     },
     {
-      url: "/imgs/be-7.avif",
+      url: `/imgs/be-7.avif`,
     },
     {
-      url: "/imgs/be-8.avif",
+      url: `/imgs/be-8.avif`,
     },
     {
-      url: "/imgs/be-9.avif",
+      url: `/imgs/be-9.avif`,
     },
     {
-      url: "/imgs/be-10.avif",
+      url: `/imgs/be-10.avif`,
     },
     {
-      url: "/imgs/be-11.avif",
+      url: `/imgs/be-11.avif`,
     },
     {
-      url: "/imgs/be-12.avif",
+      url: `/imgs/be-12.avif`,
     },
   ];
 </script>
