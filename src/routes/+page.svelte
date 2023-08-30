@@ -1,7 +1,12 @@
 <script>
+  import { flip } from "svelte/animate";
   let selectedImage = null;
 
   const selectImage = (e, image) => {
+    if (selectedImage === image) {
+      selectedImage = null;
+      return 0;
+    }
     selectedImage = image;
   };
 
@@ -53,11 +58,12 @@
   </nav>
 </header>
 <main class="img-grid">
-  {#each images as image}
+  {#each images as image (image)}
     <div
       class="member {image === selectedImage ? 'selected' : ''}"
       bind:this={image.element}
       on:click={(e) => selectImage(e, image)}
+      animate:flip={{ duration: 400 }}
     >
       <img src={image.url} alt="blue eyes" />
     </div>
@@ -71,11 +77,11 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Raleway", sans-serif;
-    background: black;
   }
 
   header {
     padding: 1%;
+    margin-bottom: 10vh;
   }
   nav {
     text-align: center;
@@ -84,7 +90,7 @@
 
   .img-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 25vh;
     gap: 10px;
     padding: 0 10%;
@@ -94,9 +100,10 @@
     border-radius: 12px;
     overflow: hidden;
 
-
-    &:hover {
-      animation: sviwel 200ms ease-in-out infinite alternate forwards;
+    @media (min-width: 768px) {
+      &:hover {
+        animation: sviwel 200ms ease-in-out infinite alternate forwards;
+      }
     }
     img {
       width: 100%;
@@ -110,11 +117,6 @@
     }
   }
 
-  .selected {
-        grid-column: 2 / span 2;
-        grid-row: 1 / span 2;
-    }
-
   @keyframes sviwel {
     from {
       transform: rotate(-0.2deg);
@@ -122,6 +124,17 @@
 
     to {
       transform: rotate(0.2deg);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .img-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .selected {
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 2;
     }
   }
 </style>
