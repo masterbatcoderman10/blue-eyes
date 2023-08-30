@@ -57,7 +57,7 @@
 </svelte:head>
 <header>
   <nav>
-    <h1>Blue Eyes</h1>
+    <h1>Blue Eyes V2</h1>
   </nav>
 </header>
 <main class="img-grid">
