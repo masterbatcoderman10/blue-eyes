@@ -50,11 +50,11 @@
 </header>
 <main class="img-grid" >
     {#each images as image}
-        <div class="member"><img src={image.url} alt="blue eyes"></div>
+        <div class="member" bind:this={image.element}><img src={image.url} alt="blue eyes"></div>
     {/each}
 </main>
 
-<style>
+<style lang="scss">
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
 
   * {
@@ -82,14 +82,30 @@
     height: 30vh;
     border-radius: 12px;
     overflow: hidden;
+
+    &:hover {
+        animation: sviwel 200ms ease-in-out infinite alternate forwards;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 2s linear;
+  
+      &:hover {
+          transform: scale(1.1);
+      }
+    }
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @keyframes sviwel {
+    from {
+        transform: rotate(-0.2deg);
+    }
+
+    to {
+        transform: rotate(0.2deg);
+    }
   }
-
-
 
 </style>
