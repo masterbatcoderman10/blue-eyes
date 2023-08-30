@@ -1,5 +1,9 @@
 <script>
-  function getHelp() {}
+  let selectedImage = null;
+
+  const selectImage = (e, image) => {
+    selectedImage = image;
+  };
 
   let obj = {};
 
@@ -48,10 +52,16 @@
     <h1>Blue Eyes</h1>
   </nav>
 </header>
-<main class="img-grid" >
-    {#each images as image}
-        <div class="member" bind:this={image.element}><img src={image.url} alt="blue eyes"></div>
-    {/each}
+<main class="img-grid">
+  {#each images as image}
+    <div
+      class="member {image === selectedImage ? 'selected' : ''}"
+      bind:this={image.element}
+      on:click={(e) => selectImage(e, image)}
+    >
+      <img src={image.url} alt="blue eyes" />
+    </div>
+  {/each}
 </main>
 
 <style lang="scss">
@@ -75,37 +85,43 @@
   .img-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px
+    grid-auto-rows: 25vh;
+    gap: 10px;
+    padding: 0 10%;
   }
 
   .member {
-    height: 30vh;
     border-radius: 12px;
     overflow: hidden;
 
+
     &:hover {
-        animation: sviwel 200ms ease-in-out infinite alternate forwards;
+      animation: sviwel 200ms ease-in-out infinite alternate forwards;
     }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: all 2s linear;
-  
+      transition: transform 200ms linear;
+
       &:hover {
-          transform: scale(1.1);
+        transform: scale(1.1);
       }
     }
   }
 
+  .selected {
+        grid-column: 2 / span 2;
+        grid-row: 1 / span 2;
+    }
+
   @keyframes sviwel {
     from {
-        transform: rotate(-0.2deg);
+      transform: rotate(-0.2deg);
     }
 
     to {
-        transform: rotate(0.2deg);
+      transform: rotate(0.2deg);
     }
   }
-
 </style>
